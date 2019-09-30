@@ -46,7 +46,9 @@ class CreateList extends React.Component {
   }
   render() {
     return (
-      <div onClick={e => e.stopPropagation()}>{this.renderCreateList()}</div>
+      <div className="item" onClick={e => e.stopPropagation()}>
+        {this.renderCreateList()}
+      </div>
     );
   }
 }

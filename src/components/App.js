@@ -5,20 +5,31 @@ import { connect } from "react-redux";
 import { toggleInsertingListName } from "../actions";
 
 class App extends React.Component {
+  renderLists() {
+    return this.props.lists.map(list => {
+      return <List title={list} />;
+    });
+  }
   render() {
     return (
       <div
-        onClick={() => this.props.toggleInsertingListName()}
         className="ui container"
+        onClick={() => this.props.toggleInsertingListName()}
       >
-        <List />
-        <CreateList />
+        <div className="ui horizontal list">
+          {this.renderLists()}
+          <CreateList />
+        </div>
       </div>
     );
   }
 }
 
+const mapStateToProps = state => {
+  return { lists: state.lists };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   { toggleInsertingListName }
 )(App);
