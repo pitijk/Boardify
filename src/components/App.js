@@ -7,7 +7,7 @@ import { toggleInsertingListName } from "../actions";
 class App extends React.Component {
   renderLists() {
     return this.props.lists.map(list => {
-      return <List title={list} />;
+      return <List key={list} title={list} />;
     });
   }
   render() {

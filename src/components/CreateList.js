@@ -5,6 +5,7 @@ import {
   createListInput
 } from "../actions";
 import { connect } from "react-redux";
+import CreateForm from "./CreateForm";
 
 class CreateList extends React.Component {
   handleSubmit = event => {
@@ -16,39 +17,17 @@ class CreateList extends React.Component {
     event.preventDefault();
   };
 
-  renderCreateList() {
-    if (!this.props.inserting) {
-      return (
-        <button
-          className="ui button"
-          onClick={this.props.toggleInsertingListName}
-        >
-          + Create another list
-        </button>
-      );
-    } else {
-      return (
-        <form onSubmit={this.handleSubmit} className="ui action input">
-          <input
-            onChange={e => this.props.createListInput(e.target.value)}
-            type="text"
-            placeholder="Enter list title..."
-            value={this.props.input}
-          />
-          <input
-            value="+ Add another list"
-            type="submit"
-            className="ui button green"
-          />
-        </form>
-      );
-    }
-  }
+  // Needed Props List: formType, inserting, input, toggleInserting(), handleSubmit(), inputActionCreator()
   render() {
     return (
-      <div className="item" onClick={e => e.stopPropagation()}>
-        {this.renderCreateList()}
-      </div>
+      <CreateForm
+        formType="list"
+        inserting={this.props.inserting}
+        input={this.props.input}
+        onClick={this.props.toggleInsertingListName}
+        handleSubmit={this.handleSubmit}
+        inputActionCreator={this.props.createListInput}
+      />
     );
   }
 }

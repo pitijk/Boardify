@@ -13,7 +13,29 @@ export const toggleInsertingListName = () => {
 
 export const createListInput = value => {
   return {
-    type: "INPUT_VALUE",
+    type: "LIST_INPUT_VALUE",
+    value
+  };
+};
+
+export const createCard = (list, title) => {
+  return {
+    type: "CREATE_CARD",
+    title,
+    list
+  };
+};
+
+export const toggleInsertingCardName = list => {
+  return {
+    type: "TOGGLE_INSERTING_CARD",
+    list
+  };
+};
+
+export const createCardInput = value => {
+  return {
+    type: "CARD_INPUT_VALUE",
     value
   };
 };
