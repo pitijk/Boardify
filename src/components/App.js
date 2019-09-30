@@ -1,30 +1,24 @@
 import React from "react";
 import List from "./List";
-import { createList } from "../actions";
+import CreateList from "./CreateList";
 import { connect } from "react-redux";
+import { toggleInsertingListName } from "../actions";
 
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <div
+        onClick={() => this.props.toggleInsertingListName()}
+        className="ui container"
+      >
         <List />
-        <button
-          onClick={() => {
-            this.props.createList("lista");
-          }}
-        >
-          + Create another list
-        </button>
+        <CreateList />
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return { lists: state.lists };
-};
-
 export default connect(
-  mapStateToProps,
-  { createList }
+  null,
+  { toggleInsertingListName }
 )(App);
