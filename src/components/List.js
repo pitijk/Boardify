@@ -2,7 +2,7 @@ import React from "react";
 import CreateCard from "./CreateCard";
 import Card from "./Card";
 import { connect } from "react-redux";
-import { toggleInsertingCardName } from "../actions";
+import { toggleInsertingCardName, deleteList } from "../actions";
 
 class List extends React.Component {
   renderCards() {
@@ -20,7 +20,16 @@ class List extends React.Component {
   render() {
     return (
       <div className="ui placeholder segment item" onClick={this.onListClick}>
-        <h2>{this.props.title}</h2>
+        <div className="ui grid">
+          <h2 className="twelve wide column">{this.props.title}</h2>
+          <button
+            onClick={() => this.props.deleteList(this.props.title)}
+            className="ui icon button"
+          >
+            <i className="trash icon"></i>
+          </button>
+        </div>
+
         <div className="ui divided relaxed list">{this.renderCards()}</div>
         <CreateCard listName={this.props.title} />
       </div>
@@ -34,5 +43,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { toggleInsertingCardName }
+  { toggleInsertingCardName, deleteList }
 )(List);

@@ -5,6 +5,13 @@ export const createList = title => {
   };
 };
 
+export const deleteList = title => {
+  return {
+    type: "DELETE_LIST",
+    title
+  };
+};
+
 export const insertingListName = () => {
   return {
     type: "INSERTING_LIST"
