@@ -2,7 +2,13 @@ import React from "react";
 import List from "./List";
 import CreateList from "./CreateList";
 import { connect } from "react-redux";
-import { notInsertingListName, toggleInsertingCardName } from "../actions";
+import {
+  notInsertingListName,
+  toggleInsertingCardName,
+  hideCard,
+  showCard
+} from "../actions";
+import CardModal from "./CardModal";
 
 class App extends React.Component {
   renderLists() {
@@ -10,9 +16,15 @@ class App extends React.Component {
       return <List key={list} title={list} />;
     });
   }
+  renderModal() {
+    if (this.props.showing) {
+      return <CardModal />;
+    }
+  }
   onAppClick = () => {
     this.props.notInsertingListName();
     this.props.toggleInsertingCardName();
+    this.props.hideCard();
   };
   render() {
     return (
@@ -21,16 +33,17 @@ class App extends React.Component {
           {this.renderLists()}
           <CreateList />
         </div>
+        {this.renderModal()}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return { lists: state.lists };
+  return { lists: state.lists, showing: state.showingCard.show };
 };
 
 export default connect(
   mapStateToProps,
-  { notInsertingListName, toggleInsertingCardName }
+  { notInsertingListName, toggleInsertingCardName, hideCard, showCard }
 )(App);
