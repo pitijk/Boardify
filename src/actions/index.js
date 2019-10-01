@@ -53,10 +53,11 @@ export const deleteCards = listTitle => {
   };
 };
 
-export const toggleInsertingCardName = list => {
+export const cardDescriptionInput = (title, description) => {
   return {
-    type: "TOGGLE_INSERTING_CARD",
-    list
+    type: "CARD_DESCRIPTION_INPUT",
+    title,
+    description
   };
 };
 
@@ -64,6 +65,20 @@ export const createCardInput = value => {
   return {
     type: "CARD_INPUT_VALUE",
     value
+  };
+};
+
+export const insertingCardName = list => {
+  return {
+    type: "INSERTING_CARD",
+    list
+  };
+};
+
+export const notInsertingCardName = list => {
+  return {
+    type: "NOT_INSERTING_CARD",
+    list
   };
 };
 
@@ -77,14 +92,6 @@ export const showCard = cardTitle => {
 export const hideCard = () => {
   return {
     type: "HIDE_CARD"
-  };
-};
-
-export const inputCardDescription = (title, description) => {
-  return {
-    type: "CARD_DESCRIPTION_INPUT",
-    title,
-    description
   };
 };
 

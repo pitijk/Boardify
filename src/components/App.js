@@ -4,7 +4,7 @@ import CreateList from "./CreateList";
 import { connect } from "react-redux";
 import {
   notInsertingListName,
-  toggleInsertingCardName,
+  notInsertingCardName,
   hideCard,
   showCard
 } from "../actions";
@@ -23,7 +23,7 @@ class App extends React.Component {
   }
   onAppClick = () => {
     this.props.notInsertingListName();
-    this.props.toggleInsertingCardName();
+    this.props.notInsertingCardName();
     this.props.hideCard();
   };
   render() {
@@ -47,5 +47,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { notInsertingListName, toggleInsertingCardName, hideCard, showCard }
+  { notInsertingListName, notInsertingCardName, hideCard, showCard }
 )(App);

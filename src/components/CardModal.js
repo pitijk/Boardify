@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import {
   hideCard,
   deleteCard,
-  inputCardDescription,
+  cardDescriptionInput,
   insertingCardDescription,
   notInsertingCardDescription
 } from "../actions";
@@ -25,7 +25,7 @@ class CardModal extends React.Component {
         <form onSubmit={this.handleSubmit} className="ui form">
           <input
             onChange={e =>
-              this.props.inputCardDescription(
+              this.props.cardDescriptionInput(
                 this.props.cardName,
                 e.target.value
               )
@@ -83,7 +83,7 @@ export default connect(
   {
     hideCard,
     deleteCard,
-    inputCardDescription,
+    cardDescriptionInput,
     insertingCardDescription,
     notInsertingCardDescription
   }

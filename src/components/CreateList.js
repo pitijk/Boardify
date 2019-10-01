@@ -30,7 +30,7 @@ class CreateList extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    inserting: state.insertingListName,
+    inserting: state.isInsertingListName,
     input: state.createListInput
   };
 };

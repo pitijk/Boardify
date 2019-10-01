@@ -2,7 +2,7 @@ import React from "react";
 import CreateCard from "./CreateCard";
 import Card from "./Card";
 import { connect } from "react-redux";
-import { toggleInsertingCardName, deleteList, deleteCards } from "../actions";
+import { notInsertingCardName, deleteList, deleteCards } from "../actions";
 
 class List extends React.Component {
   renderCards() {
@@ -15,7 +15,7 @@ class List extends React.Component {
   }
   onListClick = event => {
     event.stopPropagation();
-    this.props.toggleInsertingCardName();
+    this.props.notInsertingCardName();
   };
 
   onDeleteClick = () => {
@@ -45,5 +45,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { toggleInsertingCardName, deleteList, deleteCards }
+  { notInsertingCardName, deleteList, deleteCards }
 )(List);

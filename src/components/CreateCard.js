@@ -1,16 +1,12 @@
 import React from "react";
-import {
-  createCard,
-  toggleInsertingCardName,
-  createCardInput
-} from "../actions";
+import { createCard, insertingCardName, createCardInput } from "../actions";
 import { connect } from "react-redux";
 import CreateForm from "./CreateForm";
 
 class CreateCard extends React.Component {
   handleSubmit = event => {
     if (this.props.input !== "") {
-      this.props.toggleInsertingCardName();
+      this.props.insertingCardName(this.props.listName);
       this.props.createCard(this.props.listName, this.props.input);
       this.props.createCardInput("");
     }
@@ -18,7 +14,7 @@ class CreateCard extends React.Component {
   };
 
   onClick = () => {
-    this.props.toggleInsertingCardName(this.props.listName);
+    this.props.insertingCardName(this.props.listName);
   };
 
   // Needed Props List: formType, inserting, input, toggleInserting(), handleSubmit(), inputActionCreator()
@@ -51,5 +47,5 @@ const mapStateToProps = state => {
 };
 export default connect(
   mapStateToProps,
-  { createCard, toggleInsertingCardName, createCardInput }
+  { createCard, insertingCardName, createCardInput }
 )(CreateCard);
