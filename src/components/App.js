@@ -2,7 +2,7 @@ import React from "react";
 import List from "./List";
 import CreateList from "./CreateList";
 import { connect } from "react-redux";
-import { toggleInsertingListName } from "../actions";
+import { notInsertingListName, toggleInsertingCardName } from "../actions";
 
 class App extends React.Component {
   renderLists() {
@@ -10,12 +10,13 @@ class App extends React.Component {
       return <List key={list} title={list} />;
     });
   }
+  onAppClick = () => {
+    this.props.notInsertingListName();
+    this.props.toggleInsertingCardName();
+  };
   render() {
     return (
-      <div
-        className="ui container"
-        onClick={() => this.props.toggleInsertingListName()}
-      >
+      <div className="ui container" onClick={this.onAppClick}>
         <div className="ui horizontal list">
           {this.renderLists()}
           <CreateList />
@@ -31,5 +32,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { toggleInsertingListName }
+  { notInsertingListName, toggleInsertingCardName }
 )(App);

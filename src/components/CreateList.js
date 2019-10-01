@@ -1,16 +1,12 @@
 import React from "react";
-import {
-  createList,
-  toggleInsertingListName,
-  createListInput
-} from "../actions";
+import { createList, insertingListName, createListInput } from "../actions";
 import { connect } from "react-redux";
 import CreateForm from "./CreateForm";
 
 class CreateList extends React.Component {
   handleSubmit = event => {
     if (this.props.input !== "") {
-      this.props.toggleInsertingListName();
+      this.props.insertingListName();
       this.props.createList(this.props.input);
       this.props.createListInput("");
     }
@@ -24,7 +20,7 @@ class CreateList extends React.Component {
         formType="list"
         inserting={this.props.inserting}
         input={this.props.input}
-        onClick={this.props.toggleInsertingListName}
+        onClick={this.props.insertingListName}
         handleSubmit={this.handleSubmit}
         inputActionCreator={this.props.createListInput}
       />
@@ -40,5 +36,5 @@ const mapStateToProps = state => {
 };
 export default connect(
   mapStateToProps,
-  { createList, toggleInsertingListName, createListInput }
+  { createList, insertingListName, createListInput }
 )(CreateList);

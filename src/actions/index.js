@@ -5,9 +5,15 @@ export const createList = title => {
   };
 };
 
-export const toggleInsertingListName = () => {
+export const insertingListName = () => {
   return {
-    type: "TOGGLE_INSERTING_LIST"
+    type: "INSERTING_LIST"
+  };
+};
+
+export const notInsertingListName = () => {
+  return {
+    type: "NOT_INSERTING_LIST"
   };
 };
 
