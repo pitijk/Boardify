@@ -8,6 +8,7 @@ import cards from "./cards";
 import createCardInput from "./createCardInput";
 import insertingCardName from "./insertingCardName";
 import showingCard from "./showingCard";
+import insertingCardDescription from "./insertingCardDescription";
 
 export default combineReducers({
   lists,
@@ -16,5 +17,6 @@ export default combineReducers({
   cards,
   createCardInput,
   insertingCardName,
-  showingCard
+  showingCard,
+  insertingCardDescription
 });

@@ -28,13 +28,15 @@ class App extends React.Component {
   };
   render() {
     return (
-      <div className="ui container" onClick={this.onAppClick}>
-        <div className="ui horizontal list">
-          {this.renderLists()}
-          <CreateList />
+      <>
+        <div className="ui container" onClick={this.onAppClick}>
+          <div className="ui horizontal list">
+            {this.renderLists()}
+            <CreateList />
+          </div>
+          {this.renderModal()}
         </div>
-        {this.renderModal()}
-      </div>
+      </>
     );
   }
 }

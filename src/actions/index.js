@@ -72,3 +72,23 @@ export const hideCard = () => {
     type: "HIDE_CARD"
   };
 };
+
+export const inputCardDescription = (title, description) => {
+  return {
+    type: "CARD_DESCRIPTION_INPUT",
+    title,
+    description
+  };
+};
+
+export const insertingCardDescription = () => {
+  return {
+    type: "INSERTING_CARD_DESCRIPTION"
+  };
+};
+
+export const notInsertingCardDescription = () => {
+  return {
+    type: "NOT_INSERTING_CARD_DESCRIPTION"
+  };
+};

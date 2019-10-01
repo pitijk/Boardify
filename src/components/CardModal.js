@@ -1,16 +1,53 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
-import { hideCard, deleteCard } from "../actions";
+import {
+  hideCard,
+  deleteCard,
+  inputCardDescription,
+  insertingCardDescription,
+  notInsertingCardDescription
+} from "../actions";
 
 class CardModal extends React.Component {
   onDeleteClick = () => {
     this.props.hideCard();
     this.props.deleteCard(this.props.cardName);
   };
+
+  handleSubmit = event => {
+    this.props.notInsertingCardDescription();
+    event.preventDefault();
+  };
+  renderDescription() {
+    if (this.props.inserting) {
+      return (
+        <form onSubmit={this.handleSubmit} className="ui form">
+          <input
+            onChange={e =>
+              this.props.inputCardDescription(
+                this.props.cardName,
+                e.target.value
+              )
+            }
+            type="text"
+            placeholder={
+              this.props.description || "Add a more detailed description..."
+            }
+            value={this.props.description}
+          />
+          <input value="Save" type="submit" className="ui submit button" />
+        </form>
+      );
+    } else {
+      return (
+        <p>{this.props.description || "Add a more detailed description..."}</p>
+      );
+    }
+  }
   render() {
     return ReactDOM.createPortal(
-      <div className="ui active modal">
+      <div onClick={e => e.stopPropagation()} className="ui active modal">
         <div className="header">
           <div className="bold">{this.props.cardName}</div>
           <button onClick={this.onDeleteClick} className="ui icon button">
@@ -21,7 +58,10 @@ class CardModal extends React.Component {
           </button>
         </div>
         <div className="content">
-          <p>lalalalallalalala</p>
+          <div className="ui header">Description</div>
+          <div onClick={this.props.insertingCardDescription}>
+            {this.renderDescription()}
+          </div>
         </div>
       </div>,
       document.getElementById("modal")
@@ -30,10 +70,21 @@ class CardModal extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { cardName: state.showingCard.cardName };
+  const name = state.showingCard.cardName;
+  return {
+    cardName: name,
+    inserting: state.insertingCardDescription,
+    description: state.cards.filter(card => card.title === name)[0].description
+  };
 };
 
 export default connect(
   mapStateToProps,
-  { hideCard, deleteCard }
+  {
+    hideCard,
+    deleteCard,
+    inputCardDescription,
+    insertingCardDescription,
+    notInsertingCardDescription
+  }
 )(CardModal);
