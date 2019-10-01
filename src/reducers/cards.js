@@ -7,6 +7,8 @@ export default (state = [], action) => {
       ];
     case "DELETE_CARD":
       return state.filter(el => el.title !== action.title);
+    case "DELETE_CARDS":
+      return state.filter(el => el.insideOfList !== action.listTitle);
     case "CARD_DESCRIPTION_INPUT":
       return state.map(card =>
         card.title === action.title

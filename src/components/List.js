@@ -2,7 +2,7 @@ import React from "react";
 import CreateCard from "./CreateCard";
 import Card from "./Card";
 import { connect } from "react-redux";
-import { toggleInsertingCardName, deleteList } from "../actions";
+import { toggleInsertingCardName, deleteList, deleteCards } from "../actions";
 
 class List extends React.Component {
   renderCards() {
@@ -17,15 +17,17 @@ class List extends React.Component {
     event.stopPropagation();
     this.props.toggleInsertingCardName();
   };
+
+  onDeleteClick = () => {
+    this.props.deleteCards(this.props.title);
+    this.props.deleteList(this.props.title);
+  };
   render() {
     return (
       <div className="ui placeholder segment item" onClick={this.onListClick}>
         <div className="ui grid">
           <h2 className="twelve wide column">{this.props.title}</h2>
-          <button
-            onClick={() => this.props.deleteList(this.props.title)}
-            className="ui icon button"
-          >
+          <button onClick={this.onDeleteClick} className="ui icon button">
             <i className="trash icon"></i>
           </button>
         </div>
@@ -43,5 +45,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { toggleInsertingCardName, deleteList }
+  { toggleInsertingCardName, deleteList, deleteCards }
 )(List);

@@ -46,6 +46,13 @@ export const deleteCard = title => {
   };
 };
 
+export const deleteCards = listTitle => {
+  return {
+    type: "DELETE_CARDS",
+    listTitle
+  };
+};
+
 export const toggleInsertingCardName = list => {
   return {
     type: "TOGGLE_INSERTING_CARD",
