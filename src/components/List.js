@@ -10,7 +10,7 @@ class List extends React.Component {
       card => card.insideOfList === this.props.title
     );
     return listsCards.map(card => {
-      return <Card key={card.title} title={card.title} />;
+      return <Card key={card.cardName} title={card.cardName} />;
     });
   }
   onListClick = event => {

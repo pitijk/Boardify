@@ -5,8 +5,7 @@ import { connect } from "react-redux";
 import {
   notInsertingListName,
   notInsertingCardName,
-  hideCard,
-  showCard
+  hideModalCard
 } from "../actions";
 import CardModal from "./CardModal";
 
@@ -24,7 +23,7 @@ class App extends React.Component {
   onAppClick = () => {
     this.props.notInsertingListName();
     this.props.notInsertingCardName();
-    this.props.hideCard();
+    this.props.hideModalCard();
   };
   render() {
     return (
@@ -42,10 +41,10 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { lists: state.lists, showing: state.showingCard.show };
+  return { lists: state.lists, showing: state.modalCard.isShowing };
 };
 
 export default connect(
   mapStateToProps,
-  { notInsertingListName, notInsertingCardName, hideCard, showCard }
+  { notInsertingListName, notInsertingCardName, hideModalCard }
 )(App);

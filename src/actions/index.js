@@ -1,14 +1,74 @@
-export const createList = title => {
+// State.lists //
+
+export const createList = listName => {
   return {
     type: "CREATE_LIST",
-    title
+    listName
   };
 };
 
-export const deleteList = title => {
+export const deleteList = listName => {
   return {
     type: "DELETE_LIST",
-    title
+    listName
+  };
+};
+
+// State.cards //
+
+export const createCard = (listName, cardName) => {
+  return {
+    type: "CREATE_CARD",
+    cardName,
+    listName
+  };
+};
+
+export const deleteCard = cardName => {
+  return {
+    type: "DELETE_CARD",
+    cardName
+  };
+};
+
+export const deleteCards = listName => {
+  return {
+    type: "DELETE_CARDS",
+    listName
+  };
+};
+
+export const cardDescriptionInput = (cardName, description) => {
+  return {
+    type: "CARD_DESCRIPTION_INPUT",
+    cardName,
+    description
+  };
+};
+
+// State.modalCard //
+
+export const showModalCard = cardName => {
+  return {
+    type: "SHOW_CARD",
+    cardName
+  };
+};
+
+export const hideModalCard = () => {
+  return {
+    type: "HIDE_CARD"
+  };
+};
+
+// State.forms: //
+
+// createList //
+
+export const createListInput = input => {
+  return {
+    type: "LIST_INPUT",
+    input
   };
 };
 
@@ -24,76 +84,29 @@ export const notInsertingListName = () => {
   };
 };
 
-export const createListInput = value => {
+// createCard //
+
+export const createCardInput = input => {
   return {
-    type: "LIST_INPUT_VALUE",
-    value
+    type: "CARD_INPUT",
+    input
   };
 };
 
-export const createCard = (list, title) => {
-  return {
-    type: "CREATE_CARD",
-    title,
-    list
-  };
-};
-
-export const deleteCard = title => {
-  return {
-    type: "DELETE_CARD",
-    title
-  };
-};
-
-export const deleteCards = listTitle => {
-  return {
-    type: "DELETE_CARDS",
-    listTitle
-  };
-};
-
-export const cardDescriptionInput = (title, description) => {
-  return {
-    type: "CARD_DESCRIPTION_INPUT",
-    title,
-    description
-  };
-};
-
-export const createCardInput = value => {
-  return {
-    type: "CARD_INPUT_VALUE",
-    value
-  };
-};
-
-export const insertingCardName = list => {
+export const insertingCardName = listName => {
   return {
     type: "INSERTING_CARD",
-    list
+    listName
   };
 };
 
-export const notInsertingCardName = list => {
+export const notInsertingCardName = () => {
   return {
-    type: "NOT_INSERTING_CARD",
-    list
+    type: "NOT_INSERTING_CARD"
   };
 };
 
-export const showCard = cardTitle => {
-  return {
-    type: "SHOW_CARD",
-    cardTitle
-  };
-};
-
-export const hideCard = () => {
-  return {
-    type: "HIDE_CARD"
-  };
-};
+// insertingCardDescription //
 
 export const insertingCardDescription = () => {
   return {

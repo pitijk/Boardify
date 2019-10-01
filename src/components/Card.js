@@ -1,13 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { showCard } from "../actions";
+import { showModalCard } from "../actions";
 
 class Card extends React.Component {
   render() {
     return (
       <div>
         <div
-          onClick={() => this.props.showCard(this.props.title)}
+          onClick={() => this.props.showModalCard(this.props.title)}
           className="item"
         >
           {this.props.title}
@@ -19,5 +19,5 @@ class Card extends React.Component {
 
 export default connect(
   null,
-  { showCard }
+  { showModalCard }
 )(Card);

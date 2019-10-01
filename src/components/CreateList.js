@@ -30,8 +30,8 @@ class CreateList extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    inserting: state.isInsertingListName,
-    input: state.createListInput
+    inserting: state.forms.createList.isInserting,
+    input: state.forms.createList.input
   };
 };
 export default connect(

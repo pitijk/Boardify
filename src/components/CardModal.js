@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import {
-  hideCard,
+  hideModalCard,
   deleteCard,
   cardDescriptionInput,
   insertingCardDescription,
@@ -11,7 +11,7 @@ import {
 
 class CardModal extends React.Component {
   onDeleteClick = () => {
-    this.props.hideCard();
+    this.props.hideModalCard();
     this.props.deleteCard(this.props.cardName);
   };
 
@@ -53,7 +53,7 @@ class CardModal extends React.Component {
           <button onClick={this.onDeleteClick} className="ui icon button">
             <i className="trash icon"></i>
           </button>
-          <button onClick={this.props.hideCard} className="ui icon button">
+          <button onClick={this.props.hideModalCard} className="ui icon button">
             <i className="close icon"></i>
           </button>
         </div>
@@ -70,18 +70,19 @@ class CardModal extends React.Component {
 }
 
 const mapStateToProps = state => {
-  const name = state.showingCard.cardName;
+  const name = state.modalCard.cardName;
   return {
     cardName: name,
-    inserting: state.insertingCardDescription,
-    description: state.cards.filter(card => card.title === name)[0].description
+    inserting: state.forms.insertingCardDescription,
+    description: state.cards.filter(card => card.cardName === name)[0]
+      .description
   };
 };
 
 export default connect(
   mapStateToProps,
   {
-    hideCard,
+    hideModalCard,
     deleteCard,
     cardDescriptionInput,
     insertingCardDescription,

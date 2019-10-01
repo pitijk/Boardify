@@ -17,16 +17,16 @@ class CreateCard extends React.Component {
     this.props.insertingCardName(this.props.listName);
   };
 
-  // Needed Props List: formType, inserting, input, toggleInserting(), handleSubmit(), inputActionCreator()
   render() {
     let isInserting;
-    if (this.props.inserting.insideOf === this.props.listName) {
+    if (this.props.insideOf === this.props.listName && this.props.isInserting) {
       isInserting = true;
     } else {
       isInserting = false;
     }
 
     return (
+      // Needed Props List: formType, inserting, input, toggleInserting(), handleSubmit(), inputActionCreator()
       <CreateForm
         formType="card"
         inserting={isInserting}
@@ -41,8 +41,9 @@ class CreateCard extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    inserting: state.insertingCardName,
-    input: state.createCardInput
+    insideOf: state.forms.createCard.insideOf,
+    isInserting: state.forms.createCard.isInserting,
+    input: state.forms.createCard.input
   };
 };
 export default connect(

@@ -3,15 +3,19 @@ export default (state = [], action) => {
     case "CREATE_CARD":
       return [
         ...state,
-        { title: action.title, insideOfList: action.list, description: "" }
+        {
+          cardName: action.cardName,
+          insideOfList: action.listName,
+          description: ""
+        }
       ];
     case "DELETE_CARD":
-      return state.filter(el => el.title !== action.title);
+      return state.filter(el => el.cardName !== action.cardName);
     case "DELETE_CARDS":
-      return state.filter(el => el.insideOfList !== action.listTitle);
+      return state.filter(el => el.insideOfList !== action.listName);
     case "CARD_DESCRIPTION_INPUT":
       return state.map(card =>
-        card.title === action.title
+        card.cardName === action.cardName
           ? { ...card, description: action.description }
           : card
       );
