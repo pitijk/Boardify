@@ -4,34 +4,30 @@ class CreateForm extends React.Component {
   renderCreateForm() {
     if (!this.props.inserting) {
       return (
-        <button className="ui button" onClick={this.props.onClick}>
-          {`+ Create another ${this.props.formType}`}
+        <button className="button-toggle" onClick={this.props.onClick}>
+          {`+ Add another ${this.props.formType}`}
         </button>
       );
     } else {
       return (
-        <form onSubmit={this.props.handleSubmit} className="ui action input">
+        <form onSubmit={this.props.handleSubmit} className="create-form">
           <input
             onChange={e => this.props.inputActionCreator(e.target.value)}
             type="text"
             placeholder={`Enter ${this.props.formType} title...`}
             value={this.props.input}
+            className="input"
           />
-          <input
-            value={`+ Add ${this.props.formType}`}
-            type="submit"
-            className="ui button green"
-          />
+          <button
+            onClick={this.props.handleSubmit}
+            className="button"
+          >{`Add ${this.props.formType}`}</button>
         </form>
       );
     }
   }
   render() {
-    return (
-      <div className="item" onClick={e => e.stopPropagation()}>
-        {this.renderCreateForm()}
-      </div>
-    );
+    return <>{this.renderCreateForm()}</>;
   }
 }
 

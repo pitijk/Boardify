@@ -2,11 +2,7 @@ import React from "react";
 import List from "./List";
 import CreateList from "./CreateList";
 import { connect } from "react-redux";
-import {
-  notInsertingListName,
-  notInsertingCardName,
-  hideModalCard
-} from "../actions";
+import { notInsertingListName, notInsertingCardName } from "../actions";
 import CardModal from "./CardModal";
 
 class App extends React.Component {
@@ -23,19 +19,16 @@ class App extends React.Component {
   onAppClick = () => {
     this.props.notInsertingListName();
     this.props.notInsertingCardName();
-    this.props.hideModalCard();
   };
   render() {
     return (
-      <>
-        <div className="ui container" onClick={this.onAppClick}>
-          <div className="ui horizontal list">
-            {this.renderLists()}
-            <CreateList />
-          </div>
-          {this.renderModal()}
+      <div className="container" onClick={this.onAppClick}>
+        <div className="lists">
+          {this.renderLists()}
+          <CreateList />
         </div>
-      </>
+        {this.renderModal()}
+      </div>
     );
   }
 }
@@ -46,5 +39,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { notInsertingListName, notInsertingCardName, hideModalCard }
+  { notInsertingListName, notInsertingCardName }
 )(App);

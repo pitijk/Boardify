@@ -24,15 +24,14 @@ class List extends React.Component {
   };
   render() {
     return (
-      <div className="ui placeholder segment item" onClick={this.onListClick}>
-        <div className="ui grid">
-          <h2 className="twelve wide column">{this.props.title}</h2>
-          <button onClick={this.onDeleteClick} className="ui icon button">
-            <i className="trash icon"></i>
+      <div className="lists-item" onClick={this.onListClick}>
+        <div className="list-head">
+          <h2 className="list-title">{this.props.title}</h2>
+          <button onClick={this.onDeleteClick} className="button-icon">
+            <i className="fas fa-times fa-2x"></i>
           </button>
         </div>
-
-        <div className="ui divided relaxed list">{this.renderCards()}</div>
+        <div className="cards">{this.renderCards()}</div>
         <CreateCard listName={this.props.title} />
       </div>
     );

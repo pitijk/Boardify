@@ -1,0 +1,205 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #0a7cbf;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  min-height: 100vh;
+  width: 100%;
+  padding: 10px 10px;
+  white-space: nowrap;
+}
+
+.lists {
+}
+
+.lists-item {
+  display: inline-block;
+  vertical-align: top;
+  width: 250px;
+  background-color: #ebecf0;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.list-container {
+  padding: 10px;
+}
+
+.list-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: #172b4d;
+  margin: 10px;
+}
+
+.fa-times,
+.fa-trash {
+  color: #172b4d;
+}
+
+.fa-times:hover,
+.fa-trash:hover {
+  color: #345ca2;
+}
+
+.list-title {
+  font-size: 1rem;
+  white-space: normal;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+
+.cards .card {
+  background-color: white;
+  padding: 0.3rem;
+  border-radius: 5px;
+  border-bottom: 1px solid grey;
+  margin-top: 5px;
+  white-space: normal;
+}
+
+.card:hover {
+  background: #f4f5f7;
+}
+
+.button-icon {
+  border: none;
+  background-color: inherit;
+}
+
+.button-toggle {
+  background-color: rgb(61, 153, 215);
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+  color: white;
+  font-size: 1rem;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.button-toggle:focus {
+  outline: none;
+}
+
+.button-toggle:hover {
+  background-color: #5ba4d4;
+}
+
+.create-form {
+  margin: 5px;
+  display: flex;
+}
+
+.input {
+  padding: 0.2rem 0 0.2rem 0.2rem;
+  font-size: 1rem;
+  border: none;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.create-card .input,
+.create-card .button {
+  border-bottom: 1px solid grey;
+}
+.button {
+  font-size: 1rem;
+  padding: 0.2rem;
+  border: none;
+  background-color: rgb(66, 179, 43);
+  color: white;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.button:hover {
+  background-color: #61bd4f;
+}
+
+.create-card .button-toggle {
+  background-color: #ebecf0;
+  color: grey;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.create-card .button-toggle:hover {
+  background-color: #c9cad0;
+  color: rgb(60, 60, 60);
+}
+
+/* ############ */
+/* MODAL */
+/* ############ */
+
+.modal-up {
+  overflow: hidden;
+  position: fixed;
+}
+
+.modal-bg {
+  overflow: hidden;
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-container {
+  background-color: white;
+  color: #172b4d;
+  border-radius: 5px;
+  margin: 5% 20%;
+  padding: 15px;
+  overflow-y: auto;
+  line-height: 1.5;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.icons .button-icon {
+  margin-left: 15px;
+}
+
+.desc-form {
+}
+.desc-input {
+  width: 100%;
+  padding: 0.3rem;
+  font-size: 1rem;
+  margin: 1rem 0;
+}
+
+.desc-form .desc-button {
+  border-radius: 5px;
+}

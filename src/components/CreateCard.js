@@ -27,14 +27,16 @@ class CreateCard extends React.Component {
 
     return (
       // Needed Props List: formType, inserting, input, toggleInserting(), handleSubmit(), inputActionCreator()
-      <CreateForm
-        formType="card"
-        inserting={isInserting}
-        input={this.props.input}
-        onClick={this.onClick}
-        handleSubmit={this.handleSubmit}
-        inputActionCreator={this.props.createCardInput}
-      />
+      <div className="create-card" onClick={e => e.stopPropagation()}>
+        <CreateForm
+          formType="card"
+          inserting={isInserting}
+          input={this.props.input}
+          onClick={this.onClick}
+          handleSubmit={this.handleSubmit}
+          inputActionCreator={this.props.createCardInput}
+        />
+      </div>
     );
   }
 }

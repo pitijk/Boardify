@@ -13,17 +13,27 @@ class CardModal extends React.Component {
   onDeleteClick = () => {
     this.props.hideModalCard();
     this.props.deleteCard(this.props.cardName);
+    document.body.classList.remove("modal-up");
   };
 
   handleSubmit = event => {
     this.props.notInsertingCardDescription();
     event.preventDefault();
   };
+  onDescriptionClick = event => {
+    event.stopPropagation();
+    this.props.insertingCardDescription();
+  };
   renderDescription() {
     if (this.props.inserting) {
       return (
-        <form onSubmit={this.handleSubmit} className="ui form">
+        <form
+          onSubmit={this.handleSubmit}
+          className="desc-form"
+          onClick={e => e.stopPropagation()}
+        >
           <input
+            className="desc-input"
             onChange={e =>
               this.props.cardDescriptionInput(
                 this.props.cardName,
@@ -36,30 +46,46 @@ class CardModal extends React.Component {
             }
             value={this.props.description}
           />
-          <input value="Save" type="submit" className="ui submit button" />
+          <input value="Save" type="submit" className="button desc-button" />
         </form>
       );
     } else {
       return (
-        <p>{this.props.description || "Add a more detailed description..."}</p>
+        <p className="description" onClick={this.onDescriptionClick}>
+          {this.props.description || "Add a more detailed description..."}
+        </p>
       );
     }
   }
+  onBackgroundClick = event => {
+    event.stopPropagation();
+    this.props.notInsertingCardDescription();
+    this.props.hideModalCard();
+    document.body.classList.remove("modal-up");
+  };
+  onContainerClick = event => {
+    event.stopPropagation();
+    this.props.notInsertingCardDescription();
+  };
   render() {
     return ReactDOM.createPortal(
-      <div onClick={e => e.stopPropagation()} className="ui active modal">
-        <div className="header">
-          <div className="bold">{this.props.cardName}</div>
-          <button onClick={this.onDeleteClick} className="ui icon button">
-            <i className="trash icon"></i>
-          </button>
-          <button onClick={this.props.hideModalCard} className="ui icon button">
-            <i className="close icon"></i>
-          </button>
-        </div>
-        <div className="content">
-          <div className="ui header">Description</div>
-          <div onClick={this.props.insertingCardDescription}>
+      <div onClick={this.onBackgroundClick} className="modal-bg">
+        <div onClick={this.onContainerClick} className="modal-container">
+          <div className="modal-header">
+            <h2 onClick={e => e.stopPropagation()} className="card-name">
+              {this.props.cardName}
+            </h2>
+            <div onClick={e => e.stopPropagation()} className="icons">
+              <button className="button-icon" onClick={this.onDeleteClick}>
+                <i className="fas fa-trash fa-2x"></i>
+              </button>
+              <button className="button-icon" onClick={this.onBackgroundClick}>
+                <i className="fas fa-times fa-2x"></i>
+              </button>
+            </div>
+          </div>
+          <div className="content">
+            <h3 className="small-header">Description</h3>
             {this.renderDescription()}
           </div>
         </div>

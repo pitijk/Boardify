@@ -16,14 +16,16 @@ class CreateList extends React.Component {
   // Needed Props List: formType, inserting, input, toggleInserting(), handleSubmit(), inputActionCreator()
   render() {
     return (
-      <CreateForm
-        formType="list"
-        inserting={this.props.inserting}
-        input={this.props.input}
-        onClick={this.props.insertingListName}
-        handleSubmit={this.handleSubmit}
-        inputActionCreator={this.props.createListInput}
-      />
+      <div className="lists-item" onClick={e => e.stopPropagation()}>
+        <CreateForm
+          formType="list"
+          inserting={this.props.inserting}
+          input={this.props.input}
+          onClick={this.props.insertingListName}
+          handleSubmit={this.handleSubmit}
+          inputActionCreator={this.props.createListInput}
+        />
+      </div>
     );
   }
 }
