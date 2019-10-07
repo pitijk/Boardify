@@ -1,121 +1,92 @@
-// State.lists //
+import {
+  CREATE_LIST,
+  DELETE_LIST,
+  EDIT_LIST_NAME,
+  CREATE_CARD,
+  DELETE_CARD,
+  EDIT_CARD_DESCRIPTION,
+  EDIT_CARD_NAME,
+  SHOW_MODAL,
+  HIDE_MODAL
+} from "../actionTypes";
 
-export const createList = listName => {
+export const createList = (id, name) => {
   return {
-    type: "CREATE_LIST",
-    listName
+    type: CREATE_LIST,
+    id,
+    name
   };
 };
 
-export const deleteList = listName => {
+export const deleteList = id => {
   return {
-    type: "DELETE_LIST",
-    listName
+    type: DELETE_LIST,
+    id
   };
 };
 
-// State.cards //
-
-export const createCard = (listName, cardName) => {
+export const editListName = (id, name) => {
   return {
-    type: "CREATE_CARD",
-    cardName,
-    listName
+    type: EDIT_LIST_NAME,
+    id,
+    name
   };
 };
 
-export const deleteCard = cardName => {
+export const createCard = (cardId, name, listId) => {
   return {
-    type: "DELETE_CARD",
-    cardName
+    type: CREATE_CARD,
+    cardId,
+    name,
+    listId
   };
 };
 
-export const deleteCards = listName => {
+export const deleteCard = (cardId, listId) => {
   return {
-    type: "DELETE_CARDS",
-    listName
+    type: DELETE_CARD,
+    cardId,
+    listId
   };
 };
 
-export const cardDescriptionInput = (cardName, description) => {
+export const editCardDescription = (cardId, listId, description) => {
   return {
-    type: "CARD_DESCRIPTION_INPUT",
-    cardName,
+    type: EDIT_CARD_DESCRIPTION,
+    cardId,
+    listId,
     description
   };
 };
 
-// State.modalCard //
-
-export const showModalCard = cardName => {
+export const editCardName = (cardId, listId, name) => {
   return {
-    type: "SHOW_CARD",
-    cardName
+    type: EDIT_CARD_NAME,
+    cardId,
+    listId,
+    name
   };
 };
 
-export const hideModalCard = () => {
+export const showModal = (cardId, listId) => {
   return {
-    type: "HIDE_CARD"
+    type: SHOW_MODAL,
+    cardId,
+    listId
   };
 };
 
-// State.forms: //
-
-// createList //
-
-export const createListInput = input => {
+export const hideModal = () => {
   return {
-    type: "LIST_INPUT",
-    input
+    type: HIDE_MODAL
   };
 };
 
-export const insertingListName = () => {
-  return {
-    type: "INSERTING_LIST"
-  };
-};
+// createList = (id, name)
+// createCard = (cardId, name, listId)
 
-export const notInsertingListName = () => {
-  return {
-    type: "NOT_INSERTING_LIST"
-  };
-};
-
-// createCard //
-
-export const createCardInput = input => {
-  return {
-    type: "CARD_INPUT",
-    input
-  };
-};
-
-export const insertingCardName = listName => {
-  return {
-    type: "INSERTING_CARD",
-    listName
-  };
-};
-
-export const notInsertingCardName = () => {
-  return {
-    type: "NOT_INSERTING_CARD"
-  };
-};
-
-// insertingCardDescription //
-
-export const insertingCardDescription = () => {
-  return {
-    type: "INSERTING_CARD_DESCRIPTION"
-  };
-};
-
-export const notInsertingCardDescription = () => {
-  return {
-    type: "NOT_INSERTING_CARD_DESCRIPTION"
-  };
+export const create = (typeToCreate, name, listId, cardId) => {
+  return typeToCreate === "list"
+    ? createList(listId, name)
+    : createCard(cardId, name, listId);
 };

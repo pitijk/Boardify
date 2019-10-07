@@ -1,31 +1,29 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { connect } from "react-redux";
-import {
-  hideModalCard,
-  deleteCard,
-  cardDescriptionInput,
-  insertingCardDescription,
-  notInsertingCardDescription
-} from "../actions";
+import { editCardDescription, hideModal, deleteCard } from "../actions";
 
 class CardModal extends React.Component {
-  onDeleteClick = () => {
-    this.props.hideModalCard();
-    this.props.deleteCard(this.props.cardName);
-    document.body.classList.remove("modal-up");
+  state = { isInserting: false, inputValue: this.props.description };
+
+  componentDidUpdate() {
+    if (this.state.isInserting) {
+      this.input.focus();
+    }
+  }
+
+  toggleInserting = () => {
+    this.setState({ isInserting: !this.state.isInserting });
   };
 
   handleSubmit = event => {
-    this.props.notInsertingCardDescription();
     event.preventDefault();
-  };
-  onDescriptionClick = event => {
-    event.stopPropagation();
-    this.props.insertingCardDescription();
+    //editCardDescription = (cardId, listId, description)
+    const { cardId, listId } = this.props;
+    this.props.editCardDescription(cardId, listId, this.state.inputValue);
+    this.toggleInserting();
   };
   renderDescription() {
-    if (this.props.inserting) {
+    if (this.state.isInserting) {
       return (
         <form
           onSubmit={this.handleSubmit}
@@ -33,85 +31,73 @@ class CardModal extends React.Component {
           onClick={e => e.stopPropagation()}
         >
           <input
+            onSubmit={this.handleSubmit}
+            onChange={e => this.setState({ inputValue: e.target.value })}
+            value={this.state.inputValue}
+            ref={el => (this.input = el)}
+            onBlur={this.handleSubmit}
             className="desc-input"
-            onChange={e =>
-              this.props.cardDescriptionInput(
-                this.props.cardName,
-                e.target.value
-              )
-            }
             type="text"
             placeholder={
               this.props.description || "Add a more detailed description..."
             }
-            value={this.props.description}
           />
           <input value="Save" type="submit" className="button desc-button" />
         </form>
       );
     } else {
       return (
-        <p className="description" onClick={this.onDescriptionClick}>
+        <p className="description" onClick={this.toggleInserting}>
           {this.props.description || "Add a more detailed description..."}
         </p>
       );
     }
   }
-  onBackgroundClick = event => {
-    event.stopPropagation();
-    this.props.notInsertingCardDescription();
-    this.props.hideModalCard();
-    document.body.classList.remove("modal-up");
+  onDeleteClick = () => {
+    this.props.hideModal();
+    const { cardId, listId } = this.props;
+    // deleteCard = (cardId, listId)
+    this.props.deleteCard(cardId, listId);
   };
-  onContainerClick = event => {
-    event.stopPropagation();
-    this.props.notInsertingCardDescription();
+  onCloseClick = () => {
+    this.props.hideModal();
   };
   render() {
-    return ReactDOM.createPortal(
-      <div onClick={this.onBackgroundClick} className="modal-bg">
-        <div onClick={this.onContainerClick} className="modal-container">
-          <div className="modal-header">
-            <h2 onClick={e => e.stopPropagation()} className="card-name">
-              {this.props.cardName}
-            </h2>
-            <div onClick={e => e.stopPropagation()} className="icons">
-              <button className="button-icon" onClick={this.onDeleteClick}>
-                <i className="fas fa-trash fa-2x"></i>
-              </button>
-              <button className="button-icon" onClick={this.onBackgroundClick}>
-                <i className="fas fa-times fa-2x"></i>
-              </button>
-            </div>
-          </div>
-          <div className="content">
-            <h3 className="small-header">Description</h3>
-            {this.renderDescription()}
+    return (
+      <>
+        <div className="modal-header">
+          <h2 className="card-name">{this.props.name}</h2>
+          <div className="icons">
+            <button className="button-icon" onClick={this.onDeleteClick}>
+              <i className="fas fa-trash fa-2x"></i>
+            </button>
+            <button className="button-icon" onClick={this.onCloseClick}>
+              <i className="fas fa-times fa-2x"></i>
+            </button>
           </div>
         </div>
-      </div>,
-      document.getElementById("modal")
+        <div className="content">
+          <h3 className="small-header">Description</h3>
+          {this.renderDescription()}
+        </div>
+      </>
     );
   }
 }
 
 const mapStateToProps = state => {
-  const name = state.modalCard.cardName;
-  return {
-    cardName: name,
-    inserting: state.forms.insertingCardDescription,
-    description: state.cards.filter(card => card.cardName === name)[0]
-      .description
-  };
+  const { listId, cardId } = state.modal;
+  try {
+    const { name, description } = state.lists
+      .find(list => list.id === listId)
+      .cards.find(card => card.id === cardId);
+    return { name, description, cardId, listId };
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export default connect(
   mapStateToProps,
-  {
-    hideModalCard,
-    deleteCard,
-    cardDescriptionInput,
-    insertingCardDescription,
-    notInsertingCardDescription
-  }
+  { editCardDescription, hideModal, deleteCard }
 )(CardModal);

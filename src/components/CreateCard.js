@@ -1,54 +1,30 @@
 import React from "react";
-import { createCard, insertingCardName, createCardInput } from "../actions";
 import { connect } from "react-redux";
+
 import CreateForm from "./CreateForm";
 
+// passed through props: id
 class CreateCard extends React.Component {
-  handleSubmit = event => {
-    if (this.props.input !== "") {
-      this.props.insertingCardName(this.props.listName);
-      this.props.createCard(this.props.listName, this.props.input);
-      this.props.createCardInput("");
-    }
-    event.preventDefault();
-  };
-
-  onClick = () => {
-    this.props.insertingCardName(this.props.listName);
-  };
-
   render() {
-    let isInserting;
-    if (this.props.insideOf === this.props.listName && this.props.isInserting) {
-      isInserting = true;
-    } else {
-      isInserting = false;
-    }
-
+    // props needed: formType, isInserting, listId
     return (
-      // Needed Props List: formType, inserting, input, toggleInserting(), handleSubmit(), inputActionCreator()
-      <div className="create-card" onClick={e => e.stopPropagation()}>
+      <div className="create-card">
         <CreateForm
-          formType="card"
-          inserting={isInserting}
-          input={this.props.input}
-          onClick={this.onClick}
-          handleSubmit={this.handleSubmit}
-          inputActionCreator={this.props.createCardInput}
+          formType={"card"}
+          isInserting={this.props.isInserting}
+          listId={this.props.id}
         />
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    insideOf: state.forms.createCard.insideOf,
-    isInserting: state.forms.createCard.isInserting,
-    input: state.forms.createCard.input
+    isInserting:
+      state.lists.filter(list => list.id === ownProps.id)[0].cards.length > 0
+        ? true
+        : false
   };
 };
-export default connect(
-  mapStateToProps,
-  { createCard, insertingCardName, createCardInput }
-)(CreateCard);
+export default connect(mapStateToProps)(CreateCard);

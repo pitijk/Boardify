@@ -1,16 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
-import { showModalCard } from "../actions";
+import { showModal } from "../actions";
 
+// passed through props: listId, id, name
 class Card extends React.Component {
-  onClick = () => {
-    this.props.showModalCard(this.props.title);
-    document.body.classList.add("modal-up");
-  };
+  //showModal = (cardId, listId)
   render() {
     return (
-      <p onClick={this.onClick} className="card">
-        {this.props.title}
+      <p
+        onClick={() => this.props.showModal(this.props.id, this.props.listId)}
+        className="card"
+      >
+        {this.props.name}
       </p>
     );
   }
@@ -18,5 +19,5 @@ class Card extends React.Component {
 
 export default connect(
   null,
-  { showModalCard }
+  { showModal }
 )(Card);

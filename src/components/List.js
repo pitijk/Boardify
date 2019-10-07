@@ -1,48 +1,46 @@
 import React from "react";
+import { connect } from "react-redux";
+import { deleteList } from "../actions";
+
 import CreateCard from "./CreateCard";
 import Card from "./Card";
-import { connect } from "react-redux";
-import { notInsertingCardName, deleteList, deleteCards } from "../actions";
 
+// passed through props: name, id
 class List extends React.Component {
   renderCards() {
-    const listsCards = this.props.cards.filter(
-      card => card.insideOfList === this.props.title
-    );
-    return listsCards.map(card => {
-      return <Card key={card.cardName} title={card.cardName} />;
-    });
+    if (this.props.cards) {
+      return this.props.cards.map(({ id, name }) => {
+        return <Card key={id} listId={this.props.id} id={id} name={name} />;
+      });
+    }
   }
-  onListClick = event => {
-    event.stopPropagation();
-    this.props.notInsertingCardName();
-  };
 
-  onDeleteClick = () => {
-    this.props.deleteCards(this.props.title);
-    this.props.deleteList(this.props.title);
-  };
   render() {
     return (
-      <div className="lists-item" onClick={this.onListClick}>
+      <div className="lists-item">
         <div className="list-head">
-          <h2 className="list-title">{this.props.title}</h2>
-          <button onClick={this.onDeleteClick} className="button-icon">
-            <i className="fas fa-times fa-2x"></i>
+          <h2 className="list-title">{this.props.name}</h2>
+          <button
+            onClick={() => this.props.deleteList(this.props.id)}
+            className="button-icon"
+          >
+            <i className="fas fa-trash"></i>
           </button>
         </div>
         <div className="cards">{this.renderCards()}</div>
-        <CreateCard listName={this.props.title} />
+        <CreateCard id={this.props.id} />
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return { cards: state.cards };
+const mapStateToProps = (state, ownProps) => {
+  return {
+    cards: state.lists.filter(list => list.id === ownProps.id)[0].cards
+  };
 };
 
 export default connect(
   mapStateToProps,
-  { notInsertingCardName, deleteList, deleteCards }
+  { deleteList }
 )(List);

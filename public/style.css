@@ -159,25 +159,26 @@ body {
   position: fixed;
 }
 
-.modal-bg {
-  overflow: hidden;
-  z-index: 2;
+.Overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  right: 0;
+  bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal-container {
+.Modal {
+  position: absolute;
+  top: 5vh;
+  left: 25vw;
+  right: 25vw;
+  border-radius: 5px;
+  min-height: 90vh;
+  padding: 15px;
+  line-height: 1.5;
   background-color: white;
   color: #172b4d;
-  border-radius: 5px;
-  margin: 5% 20%;
-  padding: 15px;
-  overflow-y: auto;
-  line-height: 1.5;
 }
 
 .modal-header {
