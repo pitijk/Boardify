@@ -22,7 +22,7 @@ class CreateCard extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     isInserting:
-      state.lists.filter(list => list.id === ownProps.id)[0].cards.length > 0
+      state.lists.find(list => list.id === ownProps.id).cards.length > 0
         ? true
         : false
   };
