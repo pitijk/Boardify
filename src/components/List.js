@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { deleteList } from "../actions";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 
-import CreateCard from "./CreateCard";
+import CreateForm from "./CreateForm";
 import Card from "./Card";
 
 // passed through props: name, id, index
@@ -55,7 +55,9 @@ class List extends React.Component {
                 </div>
               )}
             </Droppable>
-            <CreateCard id={this.props.id} />
+            <div className="create-card">
+              <CreateForm formType="card" listId={this.props.id} />
+            </div>
           </div>
         )}
       </Draggable>

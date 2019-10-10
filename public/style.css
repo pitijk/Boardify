@@ -64,6 +64,7 @@ body {
   display: flex;
   flex-direction: column;
   margin: 5px;
+  min-height: 20px;
 }
 
 .cards .card {
@@ -173,6 +174,9 @@ body {
   top: 5vh;
   left: 25vw;
   right: 25vw;
+  /* top: 5%;
+  left: 25%;
+  right: 25%; */
   border-radius: 5px;
   min-height: 90vh;
   padding: 15px;

@@ -14,9 +14,9 @@ function create_UUID() {
   return uuid;
 }
 
-// passed through props: formType, isInserting, Optional: listId
+// passed through props: formType, Optional: listId
 class CreateForm extends React.Component {
-  state = { isInserting: this.props.isInserting, inputValue: "" };
+  state = { isInserting: false, inputValue: "" };
 
   toggleInserting = () => {
     this.setState({ isInserting: !this.state.isInserting });
@@ -38,7 +38,7 @@ class CreateForm extends React.Component {
         this.props.listId || create_UUID(),
         create_UUID()
       );
-      this.setState({ isInserting: false, inputValue: "" });
+      this.setState({ inputValue: "" });
     }
   };
 

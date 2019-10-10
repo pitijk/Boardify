@@ -6,7 +6,7 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import Modal from "react-modal";
 import CardModal from "./CardModal";
 import List from "./List";
-import CreateList from "./CreateList";
+import CreateForm from "./CreateForm";
 
 Modal.setAppElement("#root");
 class App extends React.Component {
@@ -44,7 +44,9 @@ class App extends React.Component {
               >
                 {this.renderLists()}
                 {provided.placeholder}
-                <CreateList />
+                <div className="lists-item">
+                  <CreateForm formType="list" />
+                </div>
               </div>
             )}
           </Droppable>
