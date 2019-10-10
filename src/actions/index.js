@@ -6,6 +6,7 @@ import {
   DELETE_CARD,
   EDIT_CARD_DESCRIPTION,
   EDIT_CARD_NAME,
+  EDIT_CARD_POSITION,
   SHOW_MODAL,
   HIDE_MODAL
 } from "../actionTypes";
@@ -89,4 +90,23 @@ export const create = (typeToCreate, name, listId, cardId) => {
   return typeToCreate === "list"
     ? createList(listId, name)
     : createCard(cardId, name, listId);
+};
+
+export const editCardPosition = (
+  startingListId,
+  endingListId,
+  startingIndex,
+  endingIndex,
+  type
+) => {
+  return {
+    type: EDIT_CARD_POSITION,
+    payload: {
+      startingListId,
+      endingListId,
+      startingIndex,
+      endingIndex,
+      type
+    }
+  };
 };

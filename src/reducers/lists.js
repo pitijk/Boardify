@@ -5,7 +5,8 @@ import {
   CREATE_CARD, // cardId, listId, name
   DELETE_CARD, // cardId, listId
   EDIT_CARD_DESCRIPTION, // cardId, listId, description
-  EDIT_CARD_NAME // cardId, listId, name
+  EDIT_CARD_NAME, // cardId, listId, name
+  EDIT_CARD_POSITION // cardId, startingListId, endingListId, startingIndex, endingIndex
 } from "../actionTypes";
 
 export default (state = [], action) => {
@@ -66,6 +67,26 @@ export default (state = [], action) => {
           return list;
         }
       });
+    case EDIT_CARD_POSITION:
+      const {
+        startingListId,
+        endingListId,
+        startingIndex,
+        endingIndex,
+        type
+      } = action.payload;
+      const newState = [...state];
+      if (type === "list") {
+        const list = newState.splice(startingIndex, 1);
+        newState.splice(endingIndex, 0, ...list);
+        return newState;
+      }
+      const listStart = state.find(list => list.id === startingListId);
+      const card = listStart.cards.splice(startingIndex, 1);
+      const listEnd = state.find(list => list.id === endingListId);
+      listEnd.cards.splice(endingIndex, 0, ...card);
+      return newState;
+
     default:
       return state;
   }

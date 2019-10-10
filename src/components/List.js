@@ -1,35 +1,64 @@
 import React from "react";
 import { connect } from "react-redux";
 import { deleteList } from "../actions";
+import { Droppable, Draggable } from "react-beautiful-dnd";
 
 import CreateCard from "./CreateCard";
 import Card from "./Card";
 
-// passed through props: name, id
+// passed through props: name, id, index
 class List extends React.Component {
   renderCards() {
     if (this.props.cards) {
-      return this.props.cards.map(({ id, name }) => {
-        return <Card key={id} listId={this.props.id} id={id} name={name} />;
+      return this.props.cards.map(({ id, name }, index) => {
+        return (
+          <Card
+            key={id}
+            id={id}
+            name={name}
+            listId={this.props.id}
+            index={index}
+          />
+        );
       });
     }
   }
 
   render() {
     return (
-      <div className="lists-item">
-        <div className="list-head">
-          <h2 className="list-title">{this.props.name}</h2>
-          <button
-            onClick={() => this.props.deleteList(this.props.id)}
-            className="button-icon"
+      <Draggable draggableId={this.props.id} index={this.props.index}>
+        {provided => (
+          <div
+            className="lists-item"
+            {...provided.draggableProps}
+            ref={provided.innerRef}
+            {...provided.dragHandleProps}
           >
-            <i className="fas fa-trash"></i>
-          </button>
-        </div>
-        <div className="cards">{this.renderCards()}</div>
-        <CreateCard id={this.props.id} />
-      </div>
+            <div className="list-head">
+              <h2 className="list-title">{this.props.name}</h2>
+              <button
+                onClick={() => this.props.deleteList(this.props.id)}
+                className="button-icon"
+              >
+                <i className="fas fa-trash"></i>
+              </button>
+            </div>
+            <Droppable droppableId={this.props.id}>
+              {provided => (
+                <div
+                  className="cards"
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                >
+                  {this.renderCards()}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+            <CreateCard id={this.props.id} />
+          </div>
+        )}
+      </Draggable>
     );
   }
 }

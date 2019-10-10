@@ -6,6 +6,7 @@ export const CREATE_CARD = "CREATE_CARD";
 export const DELETE_CARD = "DELETE_CARD";
 export const EDIT_CARD_DESCRIPTION = "EDIT_CARD_DESCRIPTION";
 export const EDIT_CARD_NAME = "EDIT_CARD_NAME";
+export const EDIT_CARD_POSITION = "EDIT_CARD_POSITION";
 
 export const SHOW_MODAL = "SHOW_MODAL";
 export const HIDE_MODAL = "HIDE_MODAL";
