@@ -30,13 +30,13 @@ class CardModal extends React.Component {
           className="desc-form"
           onClick={e => e.stopPropagation()}
         >
-          <input
+          <textarea
             onSubmit={this.handleSubmit}
             onChange={e => this.setState({ inputValue: e.target.value })}
             value={this.state.inputValue}
             ref={el => (this.input = el)}
             onBlur={this.handleSubmit}
-            className="desc-input"
+            className="description--input"
             type="text"
             placeholder={
               this.props.description || "Add a more detailed description..."

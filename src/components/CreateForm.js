@@ -25,6 +25,9 @@ class CreateForm extends React.Component {
   componentDidUpdate() {
     if (this.state.isInserting) {
       this.input.focus();
+      if (this.props.formType === "list") {
+        this.input.scrollIntoView({ block: "center", inline: "start" });
+      }
     }
   }
 
