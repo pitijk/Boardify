@@ -66,7 +66,10 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { lists: state.lists, isModalShowing: state.modal.isShowing };
+  return {
+    lists: state.lists,
+    isModalShowing: state.modal.isShowing
+  };
 };
 export default connect(
   mapStateToProps,

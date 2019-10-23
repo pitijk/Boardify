@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { editCardDescription, hideModal, deleteCard } from "../actions";
+import SuperP from "./SuperP";
 
 class CardModal extends React.Component {
   state = { isInserting: false, inputValue: this.props.description };
@@ -19,6 +20,7 @@ class CardModal extends React.Component {
     event.preventDefault();
     //editCardDescription = (cardId, listId, description)
     const { cardId, listId } = this.props;
+
     this.props.editCardDescription(cardId, listId, this.state.inputValue);
     this.toggleInserting();
   };
@@ -46,11 +48,21 @@ class CardModal extends React.Component {
         </form>
       );
     } else {
-      return (
-        <p className="description" onClick={this.toggleInserting}>
-          {this.props.description || "Add a more detailed description..."}
-        </p>
-      );
+      if (this.props.description) {
+        return (
+          <SuperP
+            className="description"
+            onClick={this.toggleInserting}
+            text={this.props.description}
+          />
+        );
+      } else {
+        return (
+          <p className="description" onClick={this.toggleInserting}>
+            {"Add a more detailed description..."}
+          </p>
+        );
+      }
     }
   }
   onDeleteClick = () => {

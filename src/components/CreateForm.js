@@ -65,7 +65,7 @@ class CreateForm extends React.Component {
             className="input"
           />
           <button
-            onClick={this.handleSubmit}
+            onMouseDown={this.handleSubmit}
             className="button"
           >{`Add ${this.props.formType}`}</button>
         </form>
