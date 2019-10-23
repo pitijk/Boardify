@@ -118,8 +118,8 @@ body {
   padding: 0.2rem 0 0.2rem 0.2rem;
   font-size: 1rem;
   border: none;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  /* border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px; */
 }
 
 .input:focus {
@@ -132,12 +132,12 @@ body {
 }
 .button {
   font-size: 1rem;
-  padding: 0.2rem;
+  padding: 0 0.2rem;
   border: none;
   background-color: rgb(66, 179, 43);
   color: white;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  /* border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px; */
 }
 
 .button:hover {
@@ -201,8 +201,6 @@ body {
   margin-left: 15px;
 }
 
-.desc-form {
-}
 .desc-input {
   width: 100%;
   padding: 0.3rem;
