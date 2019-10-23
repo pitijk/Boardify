@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a090c6f6c96b124a858bbcaffa46763d",
+    "revision": "15967fbe50d3f51f96e4544d5e99d649",
     "url": "/Boardify/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Boardify/static/js/2.7151a08d.chunk.js"
   },
   {
-    "revision": "dccf2e1cfd5b61bda8e8",
-    "url": "/Boardify/static/js/main.843b9196.chunk.js"
+    "revision": "0835a4d2db0dc035b59c",
+    "url": "/Boardify/static/js/main.74d78e06.chunk.js"
   },
   {
     "revision": "71fd1af3e7dd42eb615f",
