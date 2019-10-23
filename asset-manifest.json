@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/my-app/static/js/main.843b9196.chunk.js",
-    "main.js.map": "/my-app/static/js/main.843b9196.chunk.js.map",
-    "runtime-main.js": "/my-app/static/js/runtime-main.849f4150.js",
-    "runtime-main.js.map": "/my-app/static/js/runtime-main.849f4150.js.map",
-    "static/js/2.7151a08d.chunk.js": "/my-app/static/js/2.7151a08d.chunk.js",
-    "static/js/2.7151a08d.chunk.js.map": "/my-app/static/js/2.7151a08d.chunk.js.map",
-    "index.html": "/my-app/index.html",
-    "precache-manifest.1dfa3a80cec89b61da4a9af1dab05bfd.js": "/my-app/precache-manifest.1dfa3a80cec89b61da4a9af1dab05bfd.js",
-    "service-worker.js": "/my-app/service-worker.js"
+    "main.js": "/Boardify/static/js/main.843b9196.chunk.js",
+    "main.js.map": "/Boardify/static/js/main.843b9196.chunk.js.map",
+    "runtime-main.js": "/Boardify/static/js/runtime-main.8248267b.js",
+    "runtime-main.js.map": "/Boardify/static/js/runtime-main.8248267b.js.map",
+    "static/js/2.7151a08d.chunk.js": "/Boardify/static/js/2.7151a08d.chunk.js",
+    "static/js/2.7151a08d.chunk.js.map": "/Boardify/static/js/2.7151a08d.chunk.js.map",
+    "index.html": "/Boardify/index.html",
+    "precache-manifest.7938c88cebb469801713ec95114cda82.js": "/Boardify/precache-manifest.7938c88cebb469801713ec95114cda82.js",
+    "service-worker.js": "/Boardify/service-worker.js"
   }
 }
