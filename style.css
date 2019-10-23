@@ -16,7 +16,7 @@ html {
 }
 body {
   /* background-color: #0a7cbf; */
-  background-color: red;
+  background-color: green;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -121,8 +121,8 @@ body {
   padding: 0.2rem 0 0.2rem 0.2rem;
   font-size: 1rem;
   border: none;
-  /* border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px; */
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .input:focus {
@@ -140,8 +140,8 @@ body {
   border: none;
   background-color: rgb(66, 179, 43);
   color: white;
-  /* border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px; */
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .button:hover {
