@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/Boardify/static/js/main.9bbb7064.chunk.js",
-    "main.js.map": "/Boardify/static/js/main.9bbb7064.chunk.js.map",
+    "main.js": "/Boardify/static/js/main.0dc57936.chunk.js",
+    "main.js.map": "/Boardify/static/js/main.0dc57936.chunk.js.map",
     "runtime-main.js": "/Boardify/static/js/runtime-main.8248267b.js",
     "runtime-main.js.map": "/Boardify/static/js/runtime-main.8248267b.js.map",
     "static/js/2.0ffa5790.chunk.js": "/Boardify/static/js/2.0ffa5790.chunk.js",
     "static/js/2.0ffa5790.chunk.js.map": "/Boardify/static/js/2.0ffa5790.chunk.js.map",
     "index.html": "/Boardify/index.html",
-    "precache-manifest.589a7a5be1806f1dbae7156459a76399.js": "/Boardify/precache-manifest.589a7a5be1806f1dbae7156459a76399.js",
+    "precache-manifest.0aa7e9db9ae1df9ed026cf06db4c965e.js": "/Boardify/precache-manifest.0aa7e9db9ae1df9ed026cf06db4c965e.js",
     "service-worker.js": "/Boardify/service-worker.js"
   }
 }

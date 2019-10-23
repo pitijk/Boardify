@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Boardify/precache-manifest.589a7a5be1806f1dbae7156459a76399.js"
+  "/Boardify/precache-manifest.0aa7e9db9ae1df9ed026cf06db4c965e.js"
 );
 
 self.addEventListener('message', (event) => {
