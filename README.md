@@ -1,8 +1,8 @@
+Simple trello like task management application, that shows
+a visual overview of your project.
+
 This app was created with React, redux, react-modal and react-beautiful-dnd.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Live Demo: https://pitijk.github.io/Boardify/
 
-### `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
